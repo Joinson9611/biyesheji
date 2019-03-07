@@ -1,0 +1,61 @@
+  <!--  搜索框  -->
+<view class='search'>
+   <view class='searchItem'>
+    <image  src='../../images/serch.png' bindtap='query'></image> 
+    <input type='text' placeholder='输入你想要的内容' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>     
+   </view>       
+</view>
+ <!--  轮播图  -->
+<swiper
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+>
+  <block wx:for="{{imgUrls}}" >
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"  height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='sort'  >
+  <view class='sort-item'   >
+    <view class='item' wx:for="{{sort}}" wx:for-item="sort">
+      <image src="{{sort.iconPath}}">
+      </image>
+      <text>{{sort.keyword}}</text>
+    </view>
+  </view>
+</view> 
+<view class='detail'>
+  <view class='detail-item'>
+    <view class='title'>出售自行车</view>
+    <view class="content">只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天</view>
+    <view class='img'>
+      <image mode='center' src='../../images/测试.jpg'></image> 
+    </view>
+    <view class='item' >
+      <view class='price' style='color:#666c75'>10块</view>
+      <view class='isSold'>【收】</view>
+      <view class='time'>2019-1-2</view>
+    </view>
+    <view class='line'></view>
+  </view>
+</view>
+
+<view class='detail'>
+  <view class='detail-item'>
+    <view class='title'>出售自行车</view>
+    <view class="content">只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天</view>
+    <view class='img'>
+      <image mode='center' src='../../images/测试.jpg'></image> 
+    </view>
+    <view class='item' >
+      <view class='price' style='color:#666c75'>10块</view>
+      <view class='isSold'>【收】</view>
+      <view class='time'>2019-1-2</view>
+    </view>
+    <view class='line'></view>
+  </view>
+</view>
+
