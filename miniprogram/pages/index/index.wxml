@@ -28,34 +28,19 @@
   </view>
 </view> 
 <view class='detail'>
-  <view class='detail-item'>
-    <view class='title'>出售自行车</view>
-    <view class="content">只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天</view>
-    <view class='img'>
-      <image mode='center' src='../../images/测试.jpg'></image> 
+  <view class='detail-item' wx:for='{{detail}}' data-aid='{{detail}}'   >
+    <view  data-info='{{item}}' bindtap='goDetail'>
+      <view class='title' >{{item.title}}</view>
+      <view class="content">{{item.content}}</view>
+      <view class='img'>
+        <image mode='center' src='{{item.fileID}}'></image> 
+      </view>
+      <view class='item' >
+        <view class='price' style='color:#666c75'>{{item.price}}</view>
+        <view class='isSold' >【收】</view>
+        <view class='time'>{{item.time}}</view>
+      </view>
+      <view class='line'></view>
     </view>
-    <view class='item' >
-      <view class='price' style='color:#666c75'>10块</view>
-      <view class='isSold'>【收】</view>
-      <view class='time'>2019-1-2</view>
-    </view>
-    <view class='line'></view>
   </view>
 </view>
-
-<view class='detail'>
-  <view class='detail-item'>
-    <view class='title'>出售自行车</view>
-    <view class="content">只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天只用过几天</view>
-    <view class='img'>
-      <image mode='center' src='../../images/测试.jpg'></image> 
-    </view>
-    <view class='item' >
-      <view class='price' style='color:#666c75'>10块</view>
-      <view class='isSold'>【收】</view>
-      <view class='time'>2019-1-2</view>
-    </view>
-    <view class='line'></view>
-  </view>
-</view>
-

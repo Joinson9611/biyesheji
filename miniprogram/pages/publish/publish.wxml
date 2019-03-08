@@ -1,54 +1,65 @@
  <view>
-  <form bindreset="msgFormSubmit">
-    <input type='text' placeholder='物品名称（标题）' ></input>
+  <form bindsubmit="msgFormSubmit">
+    <!-- 标题 -->
+    <input type='text' placeholder='物品名称（标题）' name="title" ></input>
+    <!-- 标题 -->
+
+    <!-- 意愿 -->
     <label>意愿</label>
-     <radio-group class="" bindchange="">
-          <label class="" wx:for="{{will}}">
-            <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-          </label>
-      </radio-group>
+    <radio-group class="" bindchange="" name="will">
+      <label class="" wx:for="{{will}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </radio-group>
+    <!-- 意愿 -->
+
+    <!-- 类别选择 -->
     <label>选择类别:</label>
-      <radio-group class="radio-group" bindchange="radioChange">
-          <label class="radio" wx:for="{{sort}}">
-            <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-          </label>
+      <radio-group class="radio-group" bindchange="radioChange" name="sort">
+        <label class="radio" wx:for="{{sort}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
       </radio-group>
-      <!-- 留下距离-->
-      <view class='space'></view>
+    <!-- 类别选择 -->
+
+
+    <!-- 物品描述 -->
     <label>描述您的物品详情</label>
     <view>
-          <!-- <w-input clear count="200" type="textarea" placeholder="输入"	bindblur='bindTextAreaBlur'/> -->
-          <textarea placeholder="物品描述" bindblur='bindTextAreaBlur' maxlength='200'></textarea>
-     </view>
+   <!-- <w-input clear count="200" type="textarea" placeholder="输入"	bindblur='bindTextAreaBlur'/> -->
+      <textarea name="content" placeholder="物品描述" bindblur='bindTextAreaBlur' maxlength='200'></textarea>
+    </view>
+    <!-- 物品描述 -->
 
-        <!-- 留下距离-->
-      <view class='space'></view>
+
     <!-- 价格参考 -->
     <label>参考价格:</label>
-    <input type='text' placeholder='参考价格' ></input>
+    <input type='text' name="price" placeholder='参考价格' ></input>
     <!-- 价格参考 -->  
+
+    <!-- 联系方式 -->  
+    <label>联系方式:</label>
+    <input type='text' name='contact' placeholder='联系方式' ></input>
+    <!-- 联系方式 --> 
+
     <!-- 图片上传-->
     <label>上传图片</label>    
-          <view class="big-logos">
+    <view class="big-logos">
       <view class='big-logos_img'>
-          <image bindtap="chooseImage" src=''></image> 
-          <image bindtap="chooseImage" src='/images/collection.png'></image> 
-        <image bindtap="chooseImage" src='/images/avatar.png'></image>   
+        <image  src=''></image> 
+        <image bindtap="chooseImage" src='/images/publish/add.png'></image> 
+        <image bindtap="deleteImge" src='/images/publish/remove.png'></image>   
       </view>
       <block wx:for="{{images}}" wx:key="{{index}}"> 
-          <view class='logoinfo'>    
-            <image src='{{item}}' catchtap='deleteImg'></image>    
-          </view>
-
-      </block>    
-    </view> 
+        <view class='logoinfo'>    
+          <image src='{{item}}' catchtap='deleteImg'></image>    
+        </view>
+      </block>
+    </view>
       <!-- 图片上传-->
 
-            <!-- 留下距离-->
-      <view class='space'></view>
-      <view class='submit-btn-view'>
-                <button formType="reset" class='submit-btn' >发布</button>
-      </view>
-
+    <view class='submit-btn-view'>
+      <button formType="submit" class='submit-btn' >发布</button>
+    </view>
   </form>
 </view>

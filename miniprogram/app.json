@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/publish/publish",
     "pages/index/index",
+    "pages/publish/publish",
     "pages/user/user",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/details/details"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -13,13 +14,12 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/tabbar/index.png",
-        "selectedIconPath" :"images/tabbar/selectindex.png"
+        "selectedIconPath": "images/tabbar/selectindex.png"
       },
       {
         "pagePath": "pages/publish/publish",
@@ -32,7 +32,13 @@
         "text": "我的",
         "iconPath": "images/tabbar/user.png",
         "selectedIconPath": "images/tabbar/selectuser.png"
-      }    
+      }
     ]
-  }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": []
 }

@@ -1,6 +1,9 @@
 // pages/index/index.js
+// 连接数据库
+const db = wx.cloud.database()
+//获取全局app
+let app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -29,16 +32,34 @@ Page({
       keyword: '其他',
       iconPath: '../../images/sort/others.png'
     }
-    ]
+    ],
+    detail: []
   },
   query() {
-    console.log("搜索");
+  },
+  //跳转详情页面
+  goDetail(e) {
+    let that = this;
+    let data = e.currentTarget.dataset.info;
+    
+    console.log(e);
+    wx.navigateTo({
+      url: '../details/details?data=' + data
+    })  
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    db.collection('publish_Info').get({
+      success(res) {
+        console.log(res.data) 
+        that.setData({
+          detail: that.data.detail.concat(res.data)
+        });       
+      }
+    });   
   }
 
 })
