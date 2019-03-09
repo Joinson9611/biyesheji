@@ -10,8 +10,8 @@ Page({
    */
   data: {
     will:[
-      { name: '1', value: '出售' , checked: true},
-      { name: '2', value: '购买'}
+      { name: '0', value: '出售' , checked: true},
+      { name: '1', value: '购买'}
     ],
     sort: [
       { name: '1', value: '旧书' },
@@ -65,19 +65,16 @@ Page({
   },
   //失去焦点时获取输入框内容
   bindTextAreaBlur: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      content: e.detail.value,
-    })
+
   },
   //表单的提交
     msgFormSubmit(e) {
     let that = this;
     let value = e.detail.value;
     let time = util.formatTime(new Date());
-    console.log(time);
     //产生随机值
     let imgUrl = this.data.images[0];
+    console.log(value);
     if(imgUrl) {
       const name = Math.random() * 100000;
       const cloudPath = name + imgUrl.match(/\.[^.]+?$/)[0];

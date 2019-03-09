@@ -8,9 +8,7 @@ Page({
    */
   data: {  
     avatarUrl: '../../images/avatar.png',
-    nickName: ''
-  
-    
+    nickName: ''   
   },
 
   /**
@@ -38,7 +36,6 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
-              console.log(res.data);
               app.globalData.openid = res.data.openid;
             }
           })

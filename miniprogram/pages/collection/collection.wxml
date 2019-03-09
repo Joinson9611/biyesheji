@@ -1,2 +1,25 @@
 <!--pages/collection/collection.wxml-->
-<text>pages/collection/collection.wxml</text>
+<import src="/template/quantity/index.wxml" />
+<scroll-view class="scroll" scroll-y="true">
+  <view class="separate"></view>
+  <view wx:for="{{carts}}">
+    <view class="cart_container">
+      <image class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}" src="{{item.isSelect?'../../images/cart/comment_select.png':'../../images/cart/comment_normal.png'}}" />
+
+      <image class="item-image" src="{{item.pic}}"></image>
+
+      <view class="column">
+        <text class="title">{{item.name}}</text>
+        <view class="row">
+          <text class="sku-price">￥</text>
+          <text class="sku-price">{{item.price}}</text>
+          <view class="sku">
+            <template is="quantity" data="{{ ...item.count, componentId: index }}" />
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="separate"></view>
+  </view>
+</scroll-view>

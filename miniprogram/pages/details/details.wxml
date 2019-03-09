@@ -1,3 +1,24 @@
-<!--pages/details/details.wxml-->
-<text>pages/details/details.wxml</text>
-<view></view>
+<view class='detail-image'>
+  <image src='{{info.fileID}}'></image>
+</view>
+<scroll-view scroll-y="true">
+  <view class="detail">
+    <text class="title">{{title}}</text>
+    <text class="price">￥{{info.price}}</text>
+    <text>标签：</text>
+    <text class="text-remark">{{info.sort}}</text>
+    <text>意愿：</text>
+    <text class="text-remark">{{info.will}}</text>
+    <text>联系方式：</text>
+    <text class="text-remark">{{info.contact}}</text>
+  </view>
+  <text>商品详情</text>
+  <text>{{info.content}}</text>
+  <view class="temp"></view>
+</scroll-view>
+<!-- 底部悬浮栏 -->
+<view class="detail-nav">
+  <button class='button-share'>分享</button>
+  <button class="button-green" bindtap="addLike" formType="submit">加入收藏</button>
+  <button class="button-red" bindtap="contactSeller" formType="submit">联系卖家</button>
+</view>

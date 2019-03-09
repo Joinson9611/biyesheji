@@ -19,11 +19,11 @@
     <view class='txt'>我的出售</view>
   </view>
   <view class='item'>
-    <image src='../../images/user/buy.png'></image>
-    <view class='txt'>我的收购</view>
+    <image src='../../images/user/service.png'></image>
+    <view class='txt'>联系客服</view>
   </view>
   <view class='item'>
     <image src='../../images/user/service.png'></image>
-    <view class='txt'>联系客服</view>
+    <view class='txt'>退出登陆</view>
   </view>
 </view>

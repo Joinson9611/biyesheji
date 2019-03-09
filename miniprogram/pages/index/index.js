@@ -40,11 +40,10 @@ Page({
   //跳转详情页面
   goDetail(e) {
     let that = this;
-    let data = e.currentTarget.dataset.info;
-    
+    let data = JSON.stringify(e.currentTarget.dataset.info);   
     console.log(e);
     wx.navigateTo({
-      url: '../details/details?data=' + data
+      url: '../details/details?data=' + data 
     })  
   },
   /**

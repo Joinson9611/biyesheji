@@ -37,7 +37,8 @@
       </view>
       <view class='item' >
         <view class='price' style='color:#666c75'>{{item.price}}</view>
-        <view class='isSold' >【收】</view>
+        <view class='buy' style='color:#f19149' wx:if="{{item.will == '0'}}">【出】</view>
+        <view class='sell' style='color:#5eb4ba' wx:else>【收】</view>
         <view class='time'>{{item.time}}</view>
       </view>
       <view class='line'></view>
