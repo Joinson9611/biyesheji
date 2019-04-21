@@ -1,0 +1,19 @@
+<view class="cu-card article {{isCard?'no-card':''}}">
+  <view wx:for='{{detail}}' data-aid='{{detail}}' wx:key class="cu-item shadow" wx:key>
+    <view data-info='{{item}}' bindtap='goDetail'>
+      <view style='display:flex;justify-content:space-between'>
+        <view class="title">{{item.title}}</view>
+        <view class="text-price text-red" style='font-size:48rpx;margin:30rpx' >{{item.price}}</view>
+      </view>
+      <view class="content">
+        <image src="{{item.fileID}}" mode="aspectFill"></image>
+        <view class="desc">
+            <view class='cu-tag line-red' wx:if="{{item.will == '0'}}">出售</view>
+            <view class='cu-tag line-blue' wx:else>收购</view>   
+            <view class='cu-tag line-orange' wx:if="{{item.will == '0'}}">{{item.sort}}</view>         
+          <view class='cu-tag round lg'>{{item.time}}</view>  
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

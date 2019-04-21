@@ -4,14 +4,21 @@
     "pages/publish/publish",
     "pages/user/user",
     "pages/collection/collection",
-    "pages/details/details"
+    "pages/details/details",
+    "pages/mysell/mysell",
+    "pages/admin/admin",
+    "pages/order/order",
+    "pages/search/search",
+    "pages/searchDesc/searchDesc",
+    "pages/buy/buy"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1296db",
     "navigationBarTitleText": "校园二手交易站",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [

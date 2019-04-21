@@ -1,29 +1,13 @@
 <view class='login'>
   <view class='user'>
     <image class='avatar' src='{{avatarUrl}}'></image>
-    <view class="nickName"><text class='name'>昵称：</text>{{nickName}}</view>
+    <view class="nickName">{{nickName}}</view>
   </view>
-  <button class='loginBtn' open-type='getUserInfo' bindgetuserinfo='getInfo' >登陆</button>
+  <button class='loginBtn' open-type='getUserInfo' bindgetuserinfo='getInfo'>授权登陆</button>
 </view>
-<view class='forMe'>
-  <view class='item'>
-    <image src='../../images/user/address.png'></image>
-    <view class='txt'>收货地址（个人信息）</view>
-  </view>
-  <view class='item' data-info="collection" bindtap='goInfo'>
-    <image src='../../images/user/mylove.png'></image>
-    <view class='txt'>我的收藏</view>
-  </view>
-  <view class='item'>
-    <image src='../../images/user/sale.png'></image>
-    <view class='txt'>我的出售</view>
-  </view>
-  <view class='item'>
-    <image src='../../images/user/service.png'></image>
-    <view class='txt'>联系客服</view>
-  </view>
-  <view class='item'>
-    <image src='../../images/user/service.png'></image>
-    <view class='txt'>退出登陆</view>
+<view class='forMe' wx:for='{{list}}'>
+  <view class='item' data-url='{{item.goUrl}}'  bindtap='goInfo' >
+    <image src='{{item.imgUrl}}'></image>
+    <view class='txt'>{{item.title}}</view>
   </view>
 </view>

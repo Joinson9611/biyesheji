@@ -1,11 +1,15 @@
+// 获取云能力
+wx.cloud.init()
+// 获取数据库引用
+const db = wx.cloud.database()
 Page({
   data: {
     isLike: true,
     // banner
     imgUrls: [
-
     ],
-    info: null
+    info: null,
+    isLike:false
   },
   //预览图片
   previewImage: function (e) {
@@ -15,22 +19,44 @@ Page({
       urls: this.data.imgUrls // 需要预览的图片http链接列表  
     })
   },
-  // 收藏
+  goBuy() {
+    wx.navigateTo({
+      url: '../order/order',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  // 收藏加入
   addLike() {
+    let that = this;
+    let data = that.data;
     this.setData({
       isLike: !this.data.isLike
     });
-  },
-  // 立即购买
-  contactSellery() {
-    wx.showToast({
-      title: '购买成功',
-      icon: 'success',
-      duration: 2000
-    });
+    console.log(data._id);
+    db.collection('collection').add({
+      data: {
+        cid: data.info._id,
+        isLike: data.isLike,
+        title: data.info.title,
+        time: data.info.time,
+        will: data.info.will,
+        price: data.info.price,
+        fileID: data.info.fileID
+      },
+      success() {
+        wx.showToast({
+          title: '加入成功',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    })
   },
   onLoad: function(options) {
     let info = JSON.parse(options.data);
+    console.log(info);
     if (info.will == '0') {
       info.will = '出售'
     }

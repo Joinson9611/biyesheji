@@ -1,85 +1,66 @@
-/* pages/collection/collection.wxss */
-.cart_container {
-  display: flex;
-  flex-direction: row;
+page {
+  background-color: #f7f7f7;
 }
-.scroll {
-  margin-bottom: 120rpx;
+.detail{
+  width: 100%;
 }
-.column {
+.detail .detail-item{
   display: flex;
   flex-direction: column;
+  background-color: white;
+  width :86%;
+  margin: 15rpx auto;
+  border-radius: 15rpx;
+  padding: 5rpx 30rpx;
+
 }
-.row {
+.detail .detail-item .img-title {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.sku {
-  margin-top: 60rpx;
-  margin-left: 100rpx;
-}
-.sku-price {
-  color: red;
-  position: relative;
-  margin-top: 70rpx;
-}
-.price {
-  color: red;
-  position: relative;
-}
-.title {
-  font-size: 38rpx;
-  margin-top: 40rpx;
-}
-.small_text {
-  font-size: 28rpx;
-  margin-right: 40rpx;
-  margin-left: 10rpx;
-}
-.item-select {
-  width: 40rpx;
-  height: 40rpx;
-  margin-top: 90rpx;
-  margin-left: 20rpx;
-}
-.item-allselect {
-  width: 40rpx;
-  height: 40rpx;
-  margin-left: 20rpx;
-}
-.item-image {
-  width: 180rpx;
-  height: 180rpx;
-  margin: 20rpx;
-}
-.bottom_line {
   width: 100%;
-  height: 2rpx;
-  background: lightgray;
+  justify-content: space-between;
 }
-.bottom_total {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  bottom: 0;
-  width: 100%;
+.detail .detail-item .img-title .left{
+
+}
+.detail .price {
+  line-height: 120rpx;
+  color: red;
+  font-size: 40rpx;
+  margin: 10rpx;
+}
+.detail .detail-item .img-title .cancel{
+  margin-top: 32rpx;
+  width: 150;
   height: 120rpx;
   line-height: 120rpx;
-  background: white;
-}
-.button-red {
-  background-color: #f44336; /* 红色 */
-}
-button {
-  position: fixed;
-  right: 0;
   color: white;
-  text-align: center;
-  display: inline-block;
-  font-size: 30rpx;
-  border-radius: 0rpx;
-  width: 30%;
-  height: 120rpx;
-  line-height: 120rpx;
+  background-color: rgb(20, 217, 231);
+  border-radius: 30rpx;
+  
+}
+.detail .detail-item .img-title .left image{
+  display: block;
+  width: 180rpx;
+  height: 160rpx;
+}
+.detail .detail-item .img-title .left .title{
+  margin-top: 10rpx; 
+  font-size: 32rpx;
+  color: rgb(149, 145, 153)
+}
+.detail .detail-item .item .time{
+  color: #999999;
+}
+.detail .detail-item .line{
+  margin: 0 auto;
+  width: 99%;
+  height: 4rpx;
+  background-color: #D8D8D8;
+}
+.detail .detail-item .item{
+  margin-top: 10rpx; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 27rpx;
 }

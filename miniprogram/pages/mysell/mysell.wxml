@@ -1,0 +1,13 @@
+<view class="cu-list menu menu-avatar shadow-lg" wx:for='{{list}}'>
+  <view class="cu-item grayscale shadow-lg" bindtap='goDetail' data-id='{{item._id}}'>
+    <image src='{{item.fileID}}' style='display:block' class="cu-avatar radius lg"></image>  
+    <view class='title'>
+      <view>{{item.title}}</view>
+        <view class='text-cut text-gray' style='width:220px'>{{item.content}}</view>
+    </view>
+    <view class='action'>
+      <view class='text-grey text-lg'>{{item.time}}</view>
+      <view style='margin-top:10rpx' class="cu-tag round bg-red lg" catchtap='remove' data-index='{{index}}' data-openid='{{item._openid}}' data-id='{{item._id}}'>删除</view>
+    </view>
+  </view>
+</view>

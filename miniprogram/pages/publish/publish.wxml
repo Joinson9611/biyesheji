@@ -1,65 +1,54 @@
- <view>
+ <view class='form'>
   <form bindsubmit="msgFormSubmit">
     <!-- 标题 -->
     <input type='text' placeholder='物品名称（标题）' name="title" ></input>
     <!-- 标题 -->
-
+    <view class='line'></view>
     <!-- 意愿 -->
-    <label>意愿</label>
+    <text>意愿:</text>
     <radio-group class="" bindchange="" name="will">
       <label class="" wx:for="{{will}}">
         <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
       </label>
     </radio-group>
     <!-- 意愿 -->
-
+    <view class='line'></view>
     <!-- 类别选择 -->
-    <label>选择类别:</label>
+    <view>
+      <label>选择类别:</label>
       <radio-group class="radio-group" bindchange="radioChange" name="sort">
         <label class="radio" wx:for="{{sort}}">
           <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
         </label>
       </radio-group>
+    </view> 
     <!-- 类别选择 -->
-
-
+    <view class='line'></view>
     <!-- 物品描述 -->
-    <label>描述您的物品详情</label>
-    <view>
-   <!-- <w-input clear count="200" type="textarea" placeholder="输入"	bindblur='bindTextAreaBlur'/> -->
-      <textarea name="content" placeholder="物品描述" bindblur='bindTextAreaBlur' maxlength='200'></textarea>
+    <view class='content'>
+      <view class='content-inner'>
+        <textarea name="content" placeholder="物品描述(详情)" bindblur='bindTextAreaBlur'  maxlength='100%'></textarea>
+      </view>
     </view>
     <!-- 物品描述 -->
-
-
     <!-- 价格参考 -->
-    <label>参考价格:</label>
     <input type='text' name="price" placeholder='参考价格' ></input>
-    <!-- 价格参考 -->  
-
+    <!-- 价格参考 -->
+    <view class='line'></view>
     <!-- 联系方式 -->  
-    <label>联系方式:</label>
     <input type='text' name='contact' placeholder='联系方式' ></input>
     <!-- 联系方式 --> 
-
-    <!-- 图片上传-->
-    <label>上传图片</label>    
-    <view class="big-logos">
-      <view class='big-logos_img'>
-        <image  src=''></image> 
-        <image bindtap="chooseImage" src='/images/publish/add.png'></image> 
-        <image bindtap="deleteImge" src='/images/publish/remove.png'></image>   
-      </view>
-      <block wx:for="{{images}}" wx:key="{{index}}"> 
-        <view class='logoinfo'>    
-          <image src='{{item}}' catchtap='deleteImg'></image>    
-        </view>
-      </block>
+    <view class='line'></view>
+    <!-- 图片上传-->    
+    <view class="chooseImage">
+      <view class='item'>
+        <image bindtap="chooseImage" src='/images/publish/add.png'></image>          
+        <image src='{{image}}' catchtap='deleteImg'></image>       
+      </view>  
     </view>
-      <!-- 图片上传-->
-
+    <!-- 图片上传-->
     <view class='submit-btn-view'>
-      <button formType="submit" class='submit-btn' >发布</button>
+      <button formType="submit" class='submit-btn round shadow-blur' >发布</button>   
     </view>
   </form>
 </view>

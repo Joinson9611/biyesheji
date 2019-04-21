@@ -6,44 +6,8 @@ page {
   width: 100% 
 }
 .search
-{
-  align-items: center;
-  width:100%;
-  height:84rpx;
-  background-color:#1296db;
-  box-sizing: border-box;
-  padding-left: 5rpx;
-  padding-top: 12rpx;
-}
-
-/* 搜索框提示文字样式 */
-.searchItem{
-  position: absolute;
-  width: 100%;
-  display: flex;
-  flex-direction: row; 
-  justify-content: center;
-}
-.search input
-{
-  width: 68%; 
-  font-size:27rpx;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-left:70rpx; 
-  height:60rpx;
-  background-color:whitesmoke;
-  border-radius: 13rpx;
- 
-}
-/* 搜索框小图标样式 */
-.search image
 { 
-  position: relative;
-  top: 10rpx;
-  left: 65rpx;
-  width: 42rpx;
-  height:45rpx;
-  border-left: 0;
+  background-color:#1296db;
 }
 /* 物品分类 */
 .sort{
@@ -57,7 +21,6 @@ page {
   align-items: center;
   justify-content: space-around;
   background-color: white;
-  width :97%;
   height: 200rpx;
   margin: 0 auto;
   border-radius: 15rpx;
@@ -95,38 +58,42 @@ page {
 
 }
 .detail .detail-item .title {
-  width: 100%;
-  text-align: center;
   font-size: 36rpx;
+  margin-bottom: 5rpx;
+  color: rgb(13, 71, 110)
 }
 .detail .detail-item .content{
   font-size: 28rpx;
 }
-.detail .detail-item .img {
+.detail .detail-item .img-item .img image{
+  width: 220rpx;
+  height: 170rpx;
+}
+.detail .detail-item .img-item{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-start;
 }
-
-.detail .detail-item .img image{
-  width: 80%;
-  height: 250rpx;
-}
-.detail .detail-item .item{
+.detail .detail-item .img-item .item{
   margin-top: 10rpx; 
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: 27rpx;
+}
+.detail .detail-item .img-item .item .price {
+  color: red;
+  font-size: 40rpx;
 }
 .detail .detail-item .item .time{
   color: #999999;
 }
-
-
 .detail .detail-item .line{
   margin: 0 auto;
   width: 99%;
   height: 4rpx;
   background-color: #D8D8D8;
+}
+.icon-search {
+  font-size: 42rpx
 }

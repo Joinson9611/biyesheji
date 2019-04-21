@@ -1,9 +1,10 @@
 // 获取云能力
 wx.cloud.init()
-// 连接数据库
+// 获取数据库引用
 const db = wx.cloud.database()
 //引入公共代码
 const util = require('../../utils/util.js');
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -19,7 +20,7 @@ Page({
       { name: '3', value: '免费' },
       { name: '4', value: '其他', checked: true },
     ],
-    images: []
+    image: '/images/publish/img.png'
   },
   
   //单选框选择事件
@@ -33,7 +34,6 @@ Page({
   //上传图片
   chooseImage() {
     let that = this;
-    if (this.data.images.length < 3) {
       wx.chooseImage({
         sizeType: ['original', 'compressed'],
         success: function (res) {
@@ -41,26 +41,16 @@ Page({
           //   title: '上传中'
           // });
           that.setData({
-            images: that.data.images.concat(res.tempFilePaths)
+            image: res.tempFilePaths[0]
           })
         }
       })
-    } else {
-        wx.showToast({
-        title: '最多上传三张图片',
-        icon: 'loading',
-        duration: 3000
-      });
-    }
   },
 
   // 删除图片
-  deleteImg: function (e) {
-    var imgs = this.data.images;
-    var index = e.currentTarget.dataset.index;
-    imgs.splice(index, 1);
+  deleteImg: function () {
     this.setData({
-      images: imgs
+      image: '/images/publish/img.png'
     });
   },
   //失去焦点时获取输入框内容
@@ -69,64 +59,73 @@ Page({
   },
   //表单的提交
     msgFormSubmit(e) {
-    let that = this;
-    let value = e.detail.value;
-    let time = util.formatTime(new Date());
-    //产生随机值
-    let imgUrl = this.data.images[0];
-    console.log(value);
-    if(imgUrl) {
-      const name = Math.random() * 100000;
-      const cloudPath = name + imgUrl.match(/\.[^.]+?$/)[0];
-      wx.cloud.uploadFile({
-        // 指定上传到的云路径
-        cloudPath,
-        // 指定要上传的文件的小程序临时文件路径
-        filePath: imgUrl,
-        // 成功回调
-        success: res => {
-          db.collection("publish_Info").add({
-            data: {
-              will: value.will,
-              title: value.title,
-              time,
-              sort: value.sort,
-              price: value.price,
-              content: value.content,
-              contact: value.contact,
-              fileID: res.fileID
-            }
-          })
-        },
-        fail: function () {
-          wx.showToast({
-            title: '上传失败',
-            'icon': 'none',
-            duration: 3000
-          })
-        }
-      }); 
-    }else{
-      db.collection("publish_Info").add({
-        data: {
-          will: value.will,
-          time,
-          title: value.title,
-          sort: value.sort,
-          price: value.price,
-          content: value.content,
-          contact: value.contact,
-          fileID: ''
-        }
+      let isLogin = app.globalData.openid;
+      let that = this;
+      if(true) {
+      let value = e.detail.value;
+      let time = util.formatTime(new Date());
+      //产生随机值
+      let imgUrl = this.data.image;
+      console.log(value);
+      if(imgUrl) {
+        //生成1~100000的浮点数作为云路径名称
+        const name = Math.random() * 100000;
+        //检索出照片临时路径的后缀
+        const postfix = imgUrl.match(/\.[^.]+?$/)[0];
+        //拼接云路径名称和后缀
+        const cloudPath = name + postfix
+        wx.cloud.uploadFile({
+          // 指定上传到的云路径
+          cloudPath,
+          // 指定要上传的文件的小程序临时文件路径
+          filePath: imgUrl,
+          // 成功回调
+          success: res => {
+            db.collection("publish_Info").add({
+              data: {
+                will: value.will,
+                title: value.title,
+                time,
+                sort: value.sort,
+                price: value.price,
+                content: value.content,
+                contact: value.contact,
+                fileID: res.fileID
+              }
+            })
+          },
+          fail: function () {
+            wx.showToast({
+              title: '上传失败',
+              'icon': 'none',
+              duration: 3000
+            })
+          }
+        }); 
+      }else{
+        db.collection("publish_Info").add({
+          data: {
+            will: value.will,
+            time,
+            title: value.title,
+            sort: value.sort,
+            price: value.price,
+            content: value.content,
+            contact: value.contact,
+            fileID: ''
+          }
+        })
+      };  
+      this.setData({
+        images: []
+      });
+      wx.showToast({
+        title: '发布成功',
+        duration: 2000
       })
-    };  
-    this.setData({
-      images: []
-    });
-    wx.showToast({
-      title: '发布成功',
-      duration: 2000
-    })
+    }else{
+       console.log('还未登陆')
+    }
   },
   //提交数据库
   //菜单导航栏的跳转

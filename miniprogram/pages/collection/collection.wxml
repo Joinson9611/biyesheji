@@ -1,25 +1,23 @@
 <!--pages/collection/collection.wxml-->
-<import src="/template/quantity/index.wxml" />
-<scroll-view class="scroll" scroll-y="true">
-  <view class="separate"></view>
-  <view wx:for="{{carts}}">
-    <view class="cart_container">
-      <image class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}" src="{{item.isSelect?'../../images/cart/comment_select.png':'../../images/cart/comment_normal.png'}}" />
-
-      <image class="item-image" src="{{item.pic}}"></image>
-
-      <view class="column">
-        <text class="title">{{item.name}}</text>
-        <view class="row">
-          <text class="sku-price">￥</text>
-          <text class="sku-price">{{item.price}}</text>
-          <view class="sku">
-            <template is="quantity" data="{{ ...item.count, componentId: index }}" />
+<scroll-view class="scroll" scroll-y="true" >
+  <view class='detail' >
+    <view class='detail-item shadow-lg' wx:for='{{list}}' >
+      <view  data-info='{{item}}' bindtap='goDetail' data-id='{{item.cid}}'>
+        <view class='img-title'> 
+          <view class='left'> 
+            <view class='title' >{{item.title}}</view>
+              <image mode='scaleToFill' src='{{item.fileID}}'></image>          
           </view>
+          <view class="text-price text-red" style='margin-top:20rpx;font-size:38rpx'>{{item.price}}</view>
+          <view class='cancel' data-id='{{item._id}}' data-index='{{index}}' catchtap='cancel'>取消关注</view>  
         </view>
-
+        <view class='item' >
+          <view class='buy' style='color:#f19149' wx:if="{{item.will == '0'}}">【出】</view>
+          <view class='sell' style='color:#5eb4ba' wx:else>【收】</view>
+          <view class='time'>{{item.time}}</view>
+        </view>
+        <view class='line'></view>
       </view>
     </view>
-    <view class="separate"></view>
   </view>
 </scroll-view>
